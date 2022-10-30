@@ -43,7 +43,7 @@ export class App extends Component {
   render() {
     // console.log(contacts);
 
-    const visibleContacts = this.onVisibleContacts();
+    // const visibleContacts = this.onVisibleContacts();
 
     return (
       <Container>
