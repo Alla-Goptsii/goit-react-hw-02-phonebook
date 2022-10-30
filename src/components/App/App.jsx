@@ -5,6 +5,8 @@ import { nanoid } from 'nanoid';
 import { ContactForm } from '../ContactForm/ContactForm';
 import { Container } from './App.styled';
 import { ContactList } from '../ContactList/ContactList';
+
+import { Filter } from '../Filter/Filter';
 import contacts from './contacts.json';
 const contactID = nanoid();
 
@@ -30,6 +32,10 @@ export class App extends Component {
     console.log(this.state);
   };
 
+  changeFilter = e => {
+    this.setState({ filter: e.currentTarget.value });
+  };
+
   onVisibleContacts = () => {
     // return this.setState.contacts;
   };
@@ -40,17 +46,27 @@ export class App extends Component {
     }));
   };
 
-  render() {
-    // console.log(contacts);
+  getVisibleContacts = () => {
+    const { filter, contacts } = this.state;
+    const normalizedFilter = filter.toLowerCase();
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
+  };
 
-    // const visibleContacts = this.onVisibleContacts();
+  render() {
+    const visibleContacts = this.getVisibleContacts();
 
     return (
       <Container>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContact} />
-        <h1>Contacts</h1>
-        <ContactList contacts={contacts} onDeleteContact={this.deleteContact} />
+        <h2>Contacts</h2>
+        <Filter value={this.state.filter} onFilter={this.changeFilter} />
+        <ContactList
+          contacts={visibleContacts}
+          onDeleteContact={this.deleteContact}
+        />
       </Container>
     );
   }

@@ -7,6 +7,7 @@ const numberID = nanoid();
 export class ContactForm extends Component {
   state = {
     contacts: [],
+    filter: '',
     name: '',
     number: '',
   };
@@ -24,16 +25,16 @@ export class ContactForm extends Component {
     this.props.onSubmit(this.state);
     // this.props.onSubmit(this.state);
 
-    this.setState({ name: '', number: '' });
-    // this.reset();
+    // this.setState({ name: '', number: '' });
+    this.reset();
   };
 
-  // reset = () => {
-  //   this.setState(() => ({
-  //     name: '',
-  //     number: '',
-  //   }));
-  // };
+  reset = () => {
+    this.setState(() => ({
+      name: '',
+      number: '',
+    }));
+  };
 
   render() {
     return (
