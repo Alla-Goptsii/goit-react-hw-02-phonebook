@@ -33,10 +33,7 @@ export class App extends Component {
 
   changeFilter = e => {
     this.setState({ filter: e.currentTarget.value });
-    this.setState({ name: '', number: '' });
   };
-
-  onVisibleContacts = () => {};
 
   deleteContact = contactID => {
     this.setState(prevState => ({
@@ -69,3 +66,5 @@ export class App extends Component {
     );
   }
 }
+
+// model.id = nanoid();

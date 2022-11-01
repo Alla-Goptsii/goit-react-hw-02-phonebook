@@ -16,7 +16,7 @@ export const Label = styled.label`
   flex-direction: column;
 `;
 
-export const Button = styled.label`
+export const Button = styled.button`
   border-radius: 4px;
   width: 100px;
   height: 20px;
