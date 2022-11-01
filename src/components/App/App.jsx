@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { render } from '@testing-library/react';
 
 import { nanoid } from 'nanoid';
 import { ContactForm } from '../ContactForm/ContactForm';
@@ -8,7 +7,6 @@ import { ContactList } from '../ContactList/ContactList';
 
 import { Filter } from '../Filter/Filter';
 import contacts from './contacts.json';
-const contactID = nanoid();
 
 export class App extends Component {
   state = {
@@ -17,28 +15,28 @@ export class App extends Component {
   };
 
   addContact = ({ name, number }) => {
-    // console.log(data);
-    console.log(name);
-    console.log(number);
-
     const contact = {
-      id: { contactID },
+      id: nanoid(),
       name,
       number,
     };
-    this.setState(prevState => ({
-      contacts: [contact, ...prevState.contacts],
-    }));
-    console.log(this.state);
+
+    const isAvailableContact = this.state.contacts.find(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
+    );
+    isAvailableContact
+      ? alert(`${name} is already in contacts`)
+      : this.setState(prevState => ({
+          contacts: [contact, ...prevState.contacts],
+        }));
   };
 
   changeFilter = e => {
     this.setState({ filter: e.currentTarget.value });
+    this.setState({ name: '', number: '' });
   };
 
-  onVisibleContacts = () => {
-    // return this.setState.contacts;
-  };
+  onVisibleContacts = () => {};
 
   deleteContact = contactID => {
     this.setState(prevState => ({
@@ -71,5 +69,3 @@ export class App extends Component {
     );
   }
 }
-
-// model.id = nanoid();
