@@ -1,6 +1,6 @@
 import React from 'react';
 import { Label } from './Filter.styled.js';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 export const Filter = ({ value, onFilter }) => {
   return (
@@ -11,7 +11,7 @@ export const Filter = ({ value, onFilter }) => {
   );
 };
 
-// Filter.propTypes = {
-//   value: PropTypes.string.isRequired,
-//   onChange: PropTypes.func.isRequired,
-// };
+Filter.propTypes = {
+  value: PropTypes.string.isRequired,
+  onFilter: PropTypes.func.isRequired,
+};

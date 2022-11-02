@@ -66,5 +66,3 @@ export class App extends Component {
     );
   }
 }
-
-// model.id = nanoid();
